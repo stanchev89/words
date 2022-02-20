@@ -5,29 +5,29 @@ import { JWT_SECRET } from "../constants/jwt-secret.js";
 const baseOptions = {};
 
 export function createToken(payload, expiryTime) {
-  const options = !!expiryTime ? { ...baseOptions, expiresIn: expiryTime } : { ...baseOptions };
+    const options = !!expiryTime ? {...baseOptions, expiresIn: expiryTime} : {...baseOptions};
 
-  return new Promise((resolve, reject) => {
-    jwt.sign(payload, JWT_SECRET, options, (err, token) => {
-      if (err) {
-        return void reject(err);
-      }
-      resolve(token);
+    return new Promise((resolve, reject) => {
+        jwt.sign(payload, JWT_SECRET, options, (err, token) => {
+            if (err) {
+                return void reject(err);
+            }
+            resolve(token);
+        });
     });
-  });
 }
 
 export function decode(token) {
-  return Promise.resolve(jwt.decode(token));
+    return Promise.resolve(jwt.decode(token));
 }
 
 export function verify(token) {
-  return new Promise((resolve, reject) => {
-    jwt.verify(token, JWT_SECRET, baseOptions, (err, decoded) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(decoded);
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, JWT_SECRET, baseOptions, (err, decoded) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(decoded);
+        });
     });
-  });
 }
