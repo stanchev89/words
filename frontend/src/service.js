@@ -14,7 +14,11 @@ class Service {
     }
 
     getWord() {
-        return apiFetch('/word').then(res => res.json())
+        return apiFetch('/word').then(res => res.json());
+    }
+
+    postWord(body) {
+        return apiFetch('/word',{method: 'POST', body}).then(res => res.json());
     }
 
     register(body) {
