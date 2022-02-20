@@ -1,0 +1,22 @@
+{
+  "name": "Words",
+  "version": "1.0.0",
+  "description": "game",
+  "main": "index.js",
+  "repository": "git@github.com:stanchev89/words.git",
+  "author": "Stefan Stanchev <stanchev89@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "global": "^4.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.15"
+  },
+  "exports": []
+}
