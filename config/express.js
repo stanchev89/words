@@ -3,12 +3,16 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import config from '../config/index.js';
 import path from 'path';
+
+const __dirname = path.resolve();
 const envMap = {
     dev: 'development',
     prod: 'production'
 };
+
 export default (app) => {
     const env = envMap[process.env.NODE_ENV] || 'development';
+    const staticPath = path.join(__dirname, config[env].staticPath);
 
     app.set('view engine', 'ejs');
     app.set('views', __pathDir + "/views");
@@ -19,7 +23,7 @@ export default (app) => {
     app.use(cors({origin: '*'}));
     app.use(express.json());
     app.use(cookieParser());
-    app.use(express.static(config[env].staticPath));
+    app.use(express.static(staticPath));
 
     app.get('*', (req, res, next) => {
         if (req.url.indexOf('/api/') > -1 ||
@@ -30,6 +34,6 @@ export default (app) => {
             return;
         }
 
-        res.sendFile(path.resolve(config[env].staticPath, 'index.html'));
+        res.sendFile(path.resolve(staticPath, 'index.html'));
     });
 };
