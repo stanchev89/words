@@ -37,7 +37,7 @@ export default class Header extends Base {
     }
 
     logout() {
-        this.service.logout().then(() => appRouter.navigateTo('/'))
+        this.service.logout().then(() => appRouter.navigateTo('/auth?action=login'))
     }
 
     generateTemplate(isLoggedIn) {
