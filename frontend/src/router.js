@@ -35,36 +35,36 @@ const guardRoutes = {
 };
 
 class AppRouter {
-  _currentPath = '/';
-  navigateTo = async (to) => {
-    if (to === location.pathname) {
-      return
-    }
-    const serializedPath = serializePath(to);
-    if (service.authUser.value === undefined) {
-      await service.authenticate();
-    }
-    this.currentPath = guardRoutes[serializedPath]
-      ? guardRoutes[serializedPath](to, service.authUser.value)
-      : serializedPath;
-    if (this.currentPath.includes('auth')) {
-      const mode = to.includes('register') || this.currentPath.includes('register')
-        ? 'register'
-        : 'login';
-      appRender.auth = `<app-auth mode=${mode}></app-auth>`;
-      this.currentPath = serializePath(this.currentPath);
-    }
-    document.getElementById('router-outlet').innerHTML = appRender[this.currentPath];
-    history.pushState(null, null, to);
-  };
+    _currentPath = '/';
+    navigateTo = async (to) => {
+        if (to === location.pathname) {
+            return
+        }
+        const serializedPath = serializePath(to);
+        if (service.authUser.value === undefined) {
+            await service.authenticate();
+        }
+        this.currentPath = guardRoutes[serializedPath]
+            ? guardRoutes[serializedPath](to, service.authUser.value)
+            : serializedPath;
+        if (this.currentPath.includes('auth')) {
+            const mode = to.includes('register') || this.currentPath.includes('register')
+                ? 'register'
+                : 'login';
+            appRender.auth = `<app-auth mode=${mode}></app-auth>`;
+            this.currentPath = serializePath(this.currentPath);
+        }
+        document.getElementById('router-outlet').innerHTML = appRender[this.currentPath];
+        history.pushState(null, null, this.currentPath);
+    };
 
-  get currentPath() {
-    return this._currentPath;
-  }
+    get currentPath() {
+        return this._currentPath;
+    }
 
-  set currentPath(val) {
-    this._currentPath = val;
-  }
+    set currentPath(val) {
+        this._currentPath = val;
+    }
 }
 
 export const appRouter = new AppRouter();
