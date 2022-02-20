@@ -55,7 +55,7 @@ class AppRouter {
             this.currentPath = serializePath(this.currentPath);
         }
         document.getElementById('router-outlet').innerHTML = appRender[this.currentPath];
-        history.pushState(null, null, this.currentPath);
+        history.pushState(null, null, to);
     };
 
     get currentPath() {
