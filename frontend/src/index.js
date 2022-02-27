@@ -1,10 +1,10 @@
 import service from "./service.js";
-import  Header  from './components/Header.js';
-import Rules from "./components/Rules.js";
-import Rank from "./components/Rank.js";
-import Profile from "./components/Profile.js";
-import Auth from "./components/Auth.js";
-import Word from "./components/Word.js";
+import  Header  from './Header/Header.js';
+import Rules from "./components/Rules/Rules.js";
+import Rank from "./Rank/Rank.js";
+import Profile from "./components/Profile/Profile.js";
+import Auth from "./components/Auth/Auth.js";
+import Word from "./components/Word/Word.js";
 
 (
     function () {

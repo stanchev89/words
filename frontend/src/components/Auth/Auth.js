@@ -1,5 +1,5 @@
-import { Base } from "./Base.js";
-import { appRouter } from "../router.js";
+import { Base } from "../Base.js";
+import { appRouter } from "../../router.js";
 
 const formTemplates = {
     login: `

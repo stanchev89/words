@@ -1,5 +1,6 @@
-import { Base } from './Base.js';
+import { Base } from '../components/Base.js';
 import { appRouter } from "../router.js";
+import styles from './Header.styles.js';
 
 export default class Header extends Base {
     constructor() {
@@ -41,27 +42,8 @@ export default class Header extends Base {
     }
 
     generateTemplate(isLoggedIn) {
-        return `
+        return `${styles}
         <nav class="nav">
-        <style>
-        .header-wrapper {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        }
-        a {
-        font-size: 24px;
-        text-decoration: none;
-        margin-right: 50px;
-        line-height: 32px;
-        }
-        a:active {
-        color: black;
-        }
-        a:hover {
-        cursor: pointer;
-        }
-        </style>
         <article class="header-wrapper">
          ${isLoggedIn
             ? ` <a href="/" class="nav__link" data-link>Играй</a>

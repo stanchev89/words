@@ -38,7 +38,7 @@ class Service {
     logout() {
         return apiFetch('/auth?action=logout').then(() => {
             this._changeAuthState(null);
-            return 
+            return
         }).catch(console.log)
     };
 

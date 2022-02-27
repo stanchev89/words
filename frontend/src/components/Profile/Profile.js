@@ -1,4 +1,4 @@
-import { Base } from "./Base.js";
+import { Base } from "../Base.js";
 
 export default class Profile extends Base {
     constructor(props) {

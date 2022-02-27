@@ -1,4 +1,4 @@
-import { Base } from "./Base.js";
+import { Base } from "../components/Base.js";
 
 export default class Rank extends Base {
     constructor() {
